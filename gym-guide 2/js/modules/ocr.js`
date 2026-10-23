@@ -1,0 +1,49 @@
+/**
+ * ocr.js — InBody Image Analysis (OCR)
+ * ---------------------------------------------------------------
+ * Uses Tesseract.js to extract text from an InBody scan image
+ * and parses the result for key metrics: Weight, Muscle Mass, and Body Fat %.
+ * ---------------------------------------------------------------
+ */
+import { STATE, persist } from "./store.js";
+
+export async function analyzeInBodyImage(file) {
+  if (!file) return null;
+
+  try {
+    // Initialize Tesseract worker
+    const { createWorker } = Tesseract;
+    const worker = await createWorker('ara+eng'); // Load both Arabic and English
+
+    const { data: { text } } = await worker.recognize(file);
+    await worker.terminate();
+
+    console.log("[OCR] Raw text extracted:", text);
+
+    // Regex patterns for common InBody labels
+    // Weight: looks for "Weight" or "الوزن" followed by a number
+    const weightMatch = text.match(/(?:Weight|الوزن)\s*[:\-]?\s*(\d{2,3}(?:\.\d+)?)/i);
+    // Muscle Mass: looks for "Muscle" or "كتلة العضلات" or "SMM" (Skeletal Muscle Mass)
+    const muscleMatch = text.match(/(?:Muscle|SMM|كتلة العضلات)\s*[:\-]?\s*(\d{2,3}(?:\.\d+)?)/i);
+    // Body Fat: looks for "Fat %" or "نسبة الدهون" or "PBF" (Percent Body Fat)
+    const fatMatch = text.match(/(?:Fat%|PBF|نسبة الدهون)\s*[:\-]?\s*(\d{1,2}(?:\.\d+)?)/i);
+
+    const results = {
+      weight: weightMatch ? parseFloat(weightMatch[1]) : null,
+      muscle: muscleMatch ? parseFloat(muscleMatch[1]) : null,
+      fat: fatMatch ? parseFloat(fatMatch[1]) : null,
+    };
+
+    // Update profile state with extracted values
+    if (results.weight) STATE.profile.weightKg = results.weight;
+    if (results.muscle) STATE.profile.muscleMass = results.muscle;
+    if (results.fat) STATE.profile.bodyFatPercent = results.fat;
+
+    persist();
+    return results;
+
+  } catch (e) {
+    console.error("[OCR] Analysis failed:", e);
+    throw e;
+  }
+}
