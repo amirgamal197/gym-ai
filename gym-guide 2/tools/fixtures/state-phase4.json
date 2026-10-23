@@ -1,0 +1,166 @@
+{
+ "version": 1,
+ "data": {
+  "schedule": {
+   "programId": "ppl3",
+   "lastThree": "ppl3",
+   "trainingDays": {
+    "3": [
+     6,
+     1,
+     3
+    ],
+    "6": [
+     6,
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  "programDaysPerWeek": 3,
+  "profile": {
+   "gender": "male",
+   "age": 29,
+   "heightCm": 180,
+   "weightKg": 82,
+   "goal": "muscle-gain",
+   "experience": "intermediate",
+   "activityLevel": "moderate",
+   "equipment": [
+    "dumbbells",
+    "cables",
+    "bodyweight"
+   ],
+   "limitations": [
+    "none"
+   ]
+  },
+  "favorites": {
+   "flat-barbell-bench": true
+  },
+  "sets": {
+   "dayPushA-main-0": {
+    "0": true,
+    "1": true
+   },
+   "dayPushA-main-1": {
+    "0": true
+   },
+   "day1-main-0": {
+    "0": true,
+    "1": true,
+    "2": true
+   },
+   "dayPushA-main-0~flat-barbell-bench": {
+    "0": true,
+    "1": true,
+    "2": true
+   }
+  },
+  "logs": {
+   "dayPushA-main-0-0-w": "22",
+   "dayPushA-main-0-0-r": "10",
+   "dayPushA-main-0-1-w": "22",
+   "dayPushA-main-0-1-r": "9",
+   "dayPushA-main-1-0-w": "20",
+   "dayPushA-main-1-0-r": "10",
+   "day1-main-0-0-w": "80",
+   "day1-main-0-0-r": "8",
+   "dayPushA-main-0~flat-barbell-bench-0-w": "70",
+   "dayPushA-main-0~flat-barbell-bench-0-r": "8",
+   "dayPushA-main-0~flat-barbell-bench-1-w": "70",
+   "dayPushA-main-0~flat-barbell-bench-1-r": "7"
+  },
+  "exerciseOverrides": {
+   "dayPushA": {
+    "0": {
+     "id": "flat-db-press",
+     "originalId": "flat-barbell-bench",
+     "since": "2026-09-30"
+    }
+   }
+  },
+  "swapLog": [
+   {
+    "dayKey": "dayPushA",
+    "index": 0,
+    "from": "flat-barbell-bench",
+    "to": "flat-db-press",
+    "at": "2026-09-30T08:10:00.000Z"
+   }
+  ],
+  "history": {
+   "dayPushA-main-0": [
+    {
+     "date": "2026-10-07",
+     "dayKey": "dayPushA",
+     "volume": 1980,
+     "best1rm": 31,
+     "name": "Flat Dumbbell Bench Press",
+     "exerciseId": "flat-db-press"
+    },
+    {
+     "date": "2026-10-14",
+     "dayKey": "dayPushA",
+     "volume": 2100,
+     "best1rm": 33,
+     "name": "Flat Dumbbell Bench Press",
+     "exerciseId": "flat-db-press"
+    }
+   ],
+   "dayPushA-main-0~flat-barbell-bench": [
+    {
+     "date": "2026-09-23",
+     "dayKey": "dayPushA",
+     "volume": 1680,
+     "best1rm": 88,
+     "name": "Flat Barbell Bench",
+     "exerciseId": "flat-barbell-bench"
+    },
+    {
+     "date": "2026-09-30",
+     "dayKey": "dayPushA",
+     "volume": 560,
+     "best1rm": 70,
+     "name": "Flat Barbell Bench",
+     "exerciseId": "flat-barbell-bench",
+     "partial": true,
+     "setsDone": 2
+    }
+   ],
+   "day1-main-0": [
+    {
+     "date": "2026-09-01",
+     "dayKey": "day1",
+     "volume": 640,
+     "best1rm": 100,
+     "name": "Back Squat"
+    },
+    {
+     "date": "2026-09-08",
+     "dayKey": "day1",
+     "volume": 720,
+     "best1rm": 104,
+     "name": "Back Squat"
+    }
+   ]
+  },
+  "checks": {
+   "sleep": true
+  },
+  "fatigue": 6,
+  "metrics": {
+   "entries": [
+    {
+     "id": "m1",
+     "date": "2026-10-01",
+     "weightKg": 82,
+     "waist": 84
+    }
+   ]
+  }
+ }
+}
